@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User{
+  id        Int       @id @default(autoincrement()) // Unique identifier for the user
+  fname     String?            // Optional field for the user's full name
+  email     String    @unique  // Email address (must be unique)
+  password  String             // User password
+
+  // Additional fields (e.g., name, date of birth) can be added as per the application's requirements
+}
